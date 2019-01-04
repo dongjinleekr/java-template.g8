@@ -113,13 +113,10 @@
     <module name="AvoidStarImport"/>
     <module name="RedundantImport"/>
     <module name="UnusedImports"/>
-    <module name="ImportOrder">
-      <property name="groups"
-                value="java,javax,org,android,net,/^com\.(?!linecorp\.|nhn\.|nhncorp\.).*$/,com.linecorp,com.nhn,com.nhncorp,jp.naver"/>
-      <property name="ordered" value="true"/>
-      <property name="separated" value="true"/>
-      <property name="option" value="top"/>
-      <property name="sortStaticImportsAlphabetically" value="true"/>
+    <module name="CustomImportOrder">
+      <property name="sortImportsInGroupAlphabetically" value="true"/>
+      <property name="separateLineBetweenGroups" value="true"/>
+      <property name="customImportOrderRules" value="STATIC###THIRD_PARTY_PACKAGE"/>
     </module>
 
     <module name="AtclauseOrder"/>

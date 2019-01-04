@@ -1,30 +1,9 @@
-name := "$name$"
-
-organization := "com.dongjinlee"
-
-version := "0.1-SNAPSHOT"
-
-description := "$description$"
-
-autoScalaLibrary := false
-
-crossPaths := false
-
-libraryDependencies ++= Seq(
-	"com.google.guava" % "guava" % "25.1-jre",
-	"com.novocode" % "junit-interface" % "0.11" % "test"
-)
-
-javacOptions ++= Seq("-source", "1.7")
-
-packageOptions in(Compile, packageBin) +=
-  Package.ManifestAttributes(new java.util.jar.Attributes.Name("Automatic-Module-Name") -> "com.dongjinlee.$name$")
-
-// enable plugins: sbt-pack
-
-enablePlugins(PackPlugin)
-
-// sbt-pack configurations
-
-packMain := Map("app" -> "com.dongjinlee.$name$.App")
-
+lazy val root = (project in file(".")).
+  settings(
+    name := "java-template.g8",
+    test in Test := {
+      val _ = (g8Test in Test).toTask("").value
+    },
+    scriptedLaunchOpts ++= List("-Xms1024m", "-Xmx1024m", "-XX:ReservedCodeCacheSize=128m", "-Xss2m", "-Dfile.encoding=UTF-8"),
+    resolvers += Resolver.url("typesafe", url("http://repo.typesafe.com/typesafe/ivy-releases/"))(Resolver.ivyStylePatterns)
+  )
