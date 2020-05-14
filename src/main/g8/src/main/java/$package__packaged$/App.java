@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package $package$;
+
 class App {
 	// got any helpful boilerplate for your users?
 }
