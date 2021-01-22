@@ -1,12 +1,48 @@
 plugins {
     id 'java'
+    id 'com.diffplug.spotless' version '5.9.0'
 }
+
+spotless {
+    java {
+        target fileTree('.') {
+            include 'src/*/java/**/*.java'
+            exclude 'src/generated'
+            exclude 'src/generated-test'
+        }
+
+        importOrder('$organization$', '', 'java', 'javax')
+        licenseHeader """/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */"""
+
+        removeUnusedImports()
+        encoding("UTF-8")
+        trimTrailingWhitespace()
+        endWithNewline()
+
+        googleJavaFormat()
+        indentWithSpaces(2)
+    }
+}
+
+compileJava.dependsOn spotlessApply
 
 group '$organization$'
 version '0.1-SNAPSHOT'
-
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
 
 repositories {
     mavenCentral()
@@ -14,6 +50,11 @@ repositories {
 
 dependencies {
     compile "com.google.guava:guava:27.0.1-jre"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile "org.assertj:assertj-core:3.11.1"
+
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.7.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
+    testCompile group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.7.0'
+    testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: '2.2'
 }
+
