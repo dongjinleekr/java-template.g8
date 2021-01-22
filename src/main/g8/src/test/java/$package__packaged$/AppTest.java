@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
-class Test {
-	// got any helpful boilerplate for your users?
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
+import org.junit.Test;
+
+public class AppTest {
+    @Test
+    public void testTrue() {
+        assertThat(true, equalTo(true));
+    }
 }

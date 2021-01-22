@@ -16,6 +16,6 @@
 
 package $package$;
 
-class App {
+public class App {
 	// got any helpful boilerplate for your users?
 }
