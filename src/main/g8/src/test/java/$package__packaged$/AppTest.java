@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package $package$;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 

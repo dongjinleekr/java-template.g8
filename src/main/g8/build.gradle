@@ -49,12 +49,11 @@ repositories {
 }
 
 dependencies {
-    compile "com.google.guava:guava:27.0.1-jre"
+    implementation "com.google.guava:guava:27.0.1-jre"
 
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.7.0'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
-    testCompile group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.7.0'
-    testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
-    testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: '2.2'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.7.0'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.7.0'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-core', version: '2.2'
 }
-
